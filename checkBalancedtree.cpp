@@ -25,7 +25,7 @@ struct Node {
 int height(Node *root){
     if(root==NULL)
       return 0;
-    return max(height(root->left),height(root->right))+1;
+    return max(height(root->left),height(root->right)+1);
 }
 bool isBalanced(Node *root)
 {
@@ -34,7 +34,7 @@ bool isBalanced(Node *root)
       return true;
     int lh=height(root->left);
     int rh=height(root->right);
-    if(abs(lh-rh)<=1 && isBalanced(root->left) && isBalanced(root->right))
+    if((lh-rh)<=1 && isBalanced(root->left) && isBalanced(root->right))
        return true;
     else
        return false;
